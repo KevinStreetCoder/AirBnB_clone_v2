@@ -1,33 +1,28 @@
 #!/usr/bin/python3
-"""
-This script starts a Flask web application with three routes
-"""
-
+"""script that starts a Flask web application"""
 from flask import Flask
-
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
-@app.route('/', strict_slashes=False)
+
+@app.route('/')
 def hello_hbnb():
-    """
-    Route that displays 'Hello HBNB!' on the root URL.
-    """
-    return "Hello HBNB!"
+    """print web"""
+    return 'Hello HBNB!'
 
-@app.route('/hbnb', strict_slashes=False)
+
+@app.route('/hbnb')
 def hbnb():
-    """
-    Route that displays 'HBNB' on the '/hbnb' URL.
-    """
-    return "HBNB"
+    """print web"""
+    return 'HBNB'
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_route(text):
-    """
-    Route that displays 'C ' followed by the value of the text variable
-    with underscores (_) replaced by spaces.
-    """
-    return "C " + text.replace("_", " ")
 
-if __name__ == "__main__":
+@app.route('/c/<text>')
+def c_is_fun(text):
+    """print C followed by the value of the text variable"""
+    return 'C {}'.format(text.replace('_', ' '))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
     app.run(host='0.0.0.0', port=5000)
