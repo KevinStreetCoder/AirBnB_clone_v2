@@ -1,26 +1,24 @@
 #!/usr/bin/python3
-"""
-This script starts a Flask web application with two routes.
-"""
-
+""" Script that starts a Flask web application """
 from flask import Flask
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
-@app.route('/', strict_slashes=False)
+
+@app.route('/')
 def hello_hbnb():
-    """
-    Route that displays 'Hello HBNB!' on the root URL.
-    """
-    return "Hello HBNB!"
+    """ Print Web """
+    return 'Hello HBNB!'
 
-@app.route('/hbnb', strict_slashes=False)
+
+@app.route('/hbnb')
 def hbnb():
-    """
-    Route that displays 'HBNB' on the '/hbnb' URL.
-    """
-    return "HBNB"
+    """ Print Web """
+    return 'HBNB'
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
+    app.run(debug=True)
     app.run(host='0.0.0.0', port=5000)
     
