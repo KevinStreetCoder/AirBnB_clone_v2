@@ -4,7 +4,6 @@
         <title>HBNB</title>
     </head>
     <body>
-        <h1>Number: {{ n }} is {{ even_or_odd }}</h1>
+        <h1>Number: {{ n }} is {% if n % 2 == 0 %}even{% else %}odd{% endif %}</h1>
     </body>
 </html>
-
